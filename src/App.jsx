@@ -182,6 +182,19 @@ body,html{overflow-x:hidden}
 .tfoot-links{display:flex;gap:20px}.tfoot-links span{font-size:11px;color:var(--grey);cursor:pointer;transition:color .2s}.tfoot-links span:hover{color:var(--orange)}
 .tfoot .copy{font-size:10px;color:var(--grey-l)}
 
+/* HAMBURGER */
+.hbg{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:1001;width:36px;height:36px}
+.hbg span{display:block;width:22px;height:2px;border-radius:2px;transition:all .3s;background:currentColor}
+.hbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-menu{position:fixed;inset:0;z-index:1000;background:rgba(7,8,10,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.mob-menu .mm-link{font-family:'Instrument Serif',serif;font-size:44px;font-weight:400;color:rgba(255,255,255,.85);cursor:pointer;padding:10px 0;letter-spacing:-.02em;transition:color .2s}
+.mob-menu .mm-link:hover,.mob-menu .mm-link.on{color:var(--orange)}
+.mob-menu .mm-sub{margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.mob-menu .mm-app{font-size:13px;font-weight:700;color:#fff;background:var(--orange);padding:14px 32px;border-radius:980px;text-decoration:none;letter-spacing:.01em}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .feat,.feat.rev{grid-template-columns:1fr;direction:ltr}
@@ -190,6 +203,7 @@ body,html{overflow-x:hidden}
   .tprow{grid-template-columns:1fr 1fr;max-width:100%}
   .tstats{grid-template-columns:repeat(2,1fr)}
   .tnav-links{display:none}
+  .hbg{display:flex}
   .ttmrow{gap:16px}
   .ftxt h3{font-size:30px}
   .fimg img,.tslide{height:320px}
@@ -218,13 +232,11 @@ body,html{overflow-x:hidden}
   .cineBtns{flex-direction:column;gap:10px;width:100%;max-width:280px}
   .cineBtns .tbtn{text-align:center}
 
-  /* LAB SECTION */
-  .labCine{height:100svh}
-  .labOverlay{background:
-    linear-gradient(0deg, rgba(7,8,10,.97) 0%, rgba(7,8,10,.82) 40%, rgba(7,8,10,.3) 68%, rgba(7,8,10,0) 100%),
-    linear-gradient(90deg, rgba(7,8,10,.6) 0%, rgba(7,8,10,0) 60%)}
-  .labContent{padding:0 20px 48px;align-items:flex-end}
+  /* LAB SECTION — show poster as bg, overlay for readability */
+  .labCine{height:auto;min-height:100svh}
+  .labContent{padding:100px 20px 52px;align-items:center;justify-content:center}
   .labStack{max-width:100%}
+  .labOverlay{background:rgba(7,8,10,.72)}
   .labCine h2{font-size:clamp(30px,9vw,42px)}
   .labCine p{font-size:14px}
 
@@ -559,6 +571,7 @@ const Sparks = ({ tint = "rgba(245,138,0,.55)" }) => {
 const Nav = ({ page, setPage }) => {
   const [scrolled, setScrolled] = useState(false);
   const [heroVisible, setHeroVisible] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", handleScroll);
@@ -578,34 +591,67 @@ const Nav = ({ page, setPage }) => {
     obs.observe(hero);
     return () => obs.disconnect();
   }, [page]);
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
   const pages = ["Home", "Pricing", "About"];
   const dark = heroVisible && !scrolled;
+  const navigate = (p) => { setPage(p); setMenuOpen(false); };
   return (
-    <nav className={`tnav${scrolled ? " s" : ""}${dark ? " d" : ""}`}>
-      <div className="tlogo" onClick={() => setPage("Home")}>
-        Tuki<em>Study</em>
-      </div>
-      <div className="tnav-links">
-        {pages.map((p) => (
-          <span
-            key={p}
-            className={page === p ? "on" : ""}
-            onClick={() => setPage(p)}
-          >
-            {p}
-          </span>
-        ))}
-      </div>
-      <a
-        href={PLAY_STORE}
-        target="_blank"
-        rel="noopener"
-        className="tbtn tbtn-dark"
-        style={{ textDecoration: "none" }}
-      >
-        Get the App
-      </a>
-    </nav>
+    <>
+      <nav className={`tnav${scrolled ? " s" : ""}${dark ? " d" : ""}`}>
+        <div className="tlogo" onClick={() => navigate("Home")}>
+          Tuki<em>Study</em>
+        </div>
+        <div className="tnav-links">
+          {pages.map((p) => (
+            <span
+              key={p}
+              className={page === p ? "on" : ""}
+              onClick={() => navigate(p)}
+            >
+              {p}
+            </span>
+          ))}
+        </div>
+        <button
+          className={`hbg${menuOpen ? " open" : ""}`}
+          onClick={() => setMenuOpen((o) => !o)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          style={{ color: dark && !menuOpen ? "#fff" : undefined }}
+        >
+          <span /><span /><span />
+        </button>
+        <a
+          href={PLAY_STORE}
+          target="_blank"
+          rel="noopener"
+          className="tbtn tbtn-dark"
+          style={{ textDecoration: "none" }}
+        >
+          Get the App
+        </a>
+      </nav>
+      {menuOpen && (
+        <div className="mob-menu">
+          {pages.map((p) => (
+            <div
+              key={p}
+              className={`mm-link${page === p ? " on" : ""}`}
+              onClick={() => navigate(p)}
+            >
+              {p}
+            </div>
+          ))}
+          <div className="mm-sub">
+            <a href={PLAY_STORE} target="_blank" rel="noopener" className="mm-app" onClick={() => setMenuOpen(false)}>
+              Get the App
+            </a>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
