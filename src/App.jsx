@@ -75,11 +75,14 @@ body,html{overflow-x:hidden}
 .tnav-links span:hover,.tnav-links span.on{color:var(--ink)}
 .tnav-links span.on::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--orange);border-radius:2px}
 @media(max-width:900px){
-  .tnav{height:auto;flex-wrap:wrap;padding:10px clamp(16px,4vw,48px) 0;gap:0}
-  .tnav .tlogo{flex:1}
-  .tnav .tbtn-dark{order:2}
+  .tnav{height:auto;flex-wrap:wrap;padding:10px clamp(16px,4vw,48px) 0;gap:0;background:rgba(255,255,255,.95)!important;backdrop-filter:blur(20px)}
+  .tnav .tlogo{flex:1;color:var(--ink)!important}
+  .tnav .tlogo em{color:var(--orange)!important}
+  .tnav .tbtn-dark{order:2;background:var(--ink)!important;color:#fff!important}
   .tnav-links{order:3;width:100%;justify-content:center;gap:20px;padding:8px 0 10px;display:flex!important}
-  .tnav-links span{font-size:12px}
+  .tnav-links span{font-size:12px;color:var(--grey)!important}
+  .tnav-links span.on{color:var(--ink)!important}
+  .tnav-links span.on::after{background:var(--orange)!important}
   .hbg{display:none!important}
 }
 .tbtn{font-size:12px;font-weight:700;padding:8px 20px;border-radius:980px;border:none;cursor:pointer;transition:all .3s;letter-spacing:.01em}
@@ -241,14 +244,13 @@ body,html{overflow-x:hidden}
   .cineBtns .tbtn{text-align:center}
 
   /* LAB SECTION */
-  .labCine{height:auto;min-height:100svh}
-  .labContent{padding:110px 20px 52px;align-items:center;justify-content:center}
+  .labCine{height:100svh}
+  .labContent{height:100%;padding:0 20px;align-items:center;justify-content:center}
   .labStack{max-width:100%}
-  .labOverlay{background:
-    radial-gradient(ellipse 90% 60% at 50% 52%, rgba(7,8,10,.68) 0%, rgba(7,8,10,.42) 55%, rgba(7,8,10,.18) 100%),
-    linear-gradient(0deg, rgba(7,8,10,.75) 0%, rgba(7,8,10,.2) 35%, rgba(7,8,10,.2) 65%, rgba(7,8,10,.55) 100%)}
-  .labCine h2{font-size:clamp(30px,9vw,42px)}
-  .labCine p{font-size:14px}
+  .labOverlay{background:linear-gradient(180deg,rgba(7,8,10,.45) 0%,rgba(7,8,10,.12) 25%,rgba(7,8,10,.12) 70%,rgba(7,8,10,.72) 100%)}
+  .labCine h2{font-size:clamp(30px,9vw,42px);text-shadow:0 2px 24px rgba(0,0,0,.9)}
+  .labCine p{font-size:14px;text-shadow:0 1px 12px rgba(0,0,0,.8)}
+  .labCine .pill{text-shadow:none}
 
   /* FEATURE ROWS */
   .tsc{padding:52px 20px}
