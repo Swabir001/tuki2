@@ -183,8 +183,84 @@ body,html{overflow-x:hidden}
 .tfoot .copy{font-size:10px;color:var(--grey-l)}
 
 /* RESPONSIVE */
-@media(max-width:900px){.feat,.feat.rev{grid-template-columns:1fr;direction:ltr}.feat.rev>*{direction:ltr}.ttrow{grid-template-columns:1fr}.tprow{grid-template-columns:1fr;max-width:340px}.tstats{grid-template-columns:repeat(2,1fr)}.tnav-links{display:none}.ttmrow{gap:16px}}
-@media(max-width:600px){.hbtns{flex-direction:column;align-items:center}}
+@media(max-width:900px){
+  .feat,.feat.rev{grid-template-columns:1fr;direction:ltr}
+  .feat.rev>*{direction:ltr}
+  .ttrow{grid-template-columns:1fr}
+  .tprow{grid-template-columns:1fr 1fr;max-width:100%}
+  .tstats{grid-template-columns:repeat(2,1fr)}
+  .tnav-links{display:none}
+  .ttmrow{gap:16px}
+  .ftxt h3{font-size:30px}
+  .fimg img,.tslide{height:320px}
+}
+@media(max-width:600px){
+  .hbtns{flex-direction:column;align-items:center}
+  .tprow{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  /* NAV */
+  .tnav{height:52px}
+
+  /* HERO (light) */
+  .thero{padding:90px 20px 36px}
+  .thero h1{font-size:clamp(34px,10vw,44px)}
+  .thero .hp{font-size:14px}
+  .hbtns{flex-direction:column;align-items:stretch;gap:10px;width:100%;max-width:280px}
+  .tbtn{font-size:13px;padding:12px 20px;text-align:center}
+
+  /* CINEMATIC HERO */
+  .cineHero{padding:80px 20px 36px;align-items:flex-end;min-height:100svh}
+  .cineHero .inner{grid-template-columns:1fr;gap:0}
+  .cineHero h1{font-size:clamp(36px,10vw,48px);margin-bottom:12px}
+  .cineHero .lede{font-size:14px;margin-bottom:18px}
+  .cineCard,.cineMeta{display:none}
+  .cineBtns{flex-direction:column;gap:10px;width:100%;max-width:280px}
+  .cineBtns .tbtn{text-align:center}
+
+  /* LAB SECTION */
+  .labCine{height:100svh}
+  .labOverlay{background:
+    linear-gradient(0deg, rgba(7,8,10,.97) 0%, rgba(7,8,10,.82) 40%, rgba(7,8,10,.3) 68%, rgba(7,8,10,0) 100%),
+    linear-gradient(90deg, rgba(7,8,10,.6) 0%, rgba(7,8,10,0) 60%)}
+  .labContent{padding:0 20px 48px;align-items:flex-end}
+  .labStack{max-width:100%}
+  .labCine h2{font-size:clamp(30px,9vw,42px)}
+  .labCine p{font-size:14px}
+
+  /* FEATURE ROWS */
+  .tsc{padding:52px 20px}
+  .ftxt h3{font-size:26px}
+  .fimg img,.tslide{height:240px}
+  .fimg{border-radius:14px}
+
+  /* CINEMATIC IMAGE */
+  .cimg img{height:240px}
+  .cimg .ov h3{font-size:22px}
+  .cimg .ov p{font-size:13px}
+  .cimg{border-radius:16px}
+
+  /* STATS */
+  .tstats{padding:40px 16px;gap:16px}
+
+  /* TESTIMONIALS */
+  .ttc blockquote{font-size:14px}
+
+  /* PRICING */
+  .tprow{grid-template-columns:1fr;max-width:100%}
+
+  /* BAND SECTION */
+  .bandCine{margin:12px;border-radius:20px}
+  .bandCine .inner{padding:40px 20px}
+  .bandCards{grid-template-columns:1fr}
+
+  /* SECTION HEADINGS */
+  .tsc h2{font-size:clamp(28px,8vw,38px)}
+
+  /* FOOTER */
+  .tfoot-r{flex-direction:column;align-items:flex-start;gap:14px}
+  .tfoot-links{flex-wrap:wrap;gap:12px}
+}
 
 /* CINEMATIC */
 .cine{position:relative;overflow:hidden}
