@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { HashRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import StudyBuddyChat from "./StudyBuddy.jsx";
 
 /* ────────── CONFIG ────────── */
@@ -425,6 +426,7 @@ const BackgroundVideo = ({
   fit = "cover",
   position = "50% 50%",
   zoom = 1.06,
+  preload = "metadata",
 }) => {
   const reduce = usePrefersReducedMotion();
   const yt = src ? getYouTubeId(src) : null;
@@ -452,7 +454,7 @@ const BackgroundVideo = ({
               muted
               loop
               playsInline
-              preload="auto"
+              preload="none"
               style={{ objectPosition: position }}
             />
           </div>
@@ -465,7 +467,7 @@ const BackgroundVideo = ({
               muted
               loop
               playsInline
-              preload="auto"
+              preload={preload}
               style={{ objectPosition: position }}
             />
           </div>
@@ -484,7 +486,7 @@ const BackgroundVideo = ({
           muted
           loop
           playsInline
-          preload="auto"
+          preload={preload}
         />
       )}
     </div>
@@ -513,7 +515,8 @@ const Sparks = ({ tint = "rgba(245,138,0,.55)" }) => {
     resize();
     window.addEventListener("resize", resize);
 
-    const dots = Array.from({ length: 56 }, () => ({
+    const count = window.innerWidth < 600 ? 20 : 46;
+    const dots = Array.from({ length: count }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
       r: 0.8 + Math.random() * 1.8,
@@ -523,7 +526,15 @@ const Sparks = ({ tint = "rgba(245,138,0,.55)" }) => {
     }));
 
     let raf = 0;
+    let active = true;
+    const obs = new IntersectionObserver(([e]) => {
+      active = e.isIntersecting;
+      if (active) raf = requestAnimationFrame(tick);
+    }, { threshold: 0 });
+    obs.observe(c);
+
     const tick = () => {
+      if (!active) return;
       ctx.clearRect(0, 0, w, h);
       ctx.fillStyle = tint;
       for (const d of dots) {
@@ -541,9 +552,9 @@ const Sparks = ({ tint = "rgba(245,138,0,.55)" }) => {
       ctx.globalAlpha = 1;
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
     return () => {
       cancelAnimationFrame(raf);
+      obs.disconnect();
       window.removeEventListener("resize", resize);
     };
   }, [reduce, tint]);
@@ -551,53 +562,47 @@ const Sparks = ({ tint = "rgba(245,138,0,.55)" }) => {
   return <canvas ref={ref} className="spark" />;
 };
 
-const Nav = ({ page, setPage }) => {
+const Nav = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [heroVisible, setHeroVisible] = useState(false);
+  const isHome = location.pathname === "/";
+  const activePage = location.pathname === "/" ? "Home"
+    : location.pathname === "/pricing" ? "Pricing" : "About";
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   useEffect(() => {
-    if (page !== "Home") {
-      setHeroVisible(false);
-      return;
-    }
+    if (!isHome) { setHeroVisible(false); return; }
     const hero = document.getElementById("cine-hero");
     if (!hero) return;
-    const obs = new IntersectionObserver(
-      ([e]) => setHeroVisible(e.isIntersecting),
-      { threshold: 0.2 },
-    );
+    const obs = new IntersectionObserver(([e]) => setHeroVisible(e.isIntersecting), { threshold: 0.2 });
     obs.observe(hero);
     return () => obs.disconnect();
-  }, [page]);
-  const pages = ["Home", "Pricing", "About"];
+  }, [isHome]);
+
+  const go = useCallback((p) => {
+    navigate(p === "Home" ? "/" : `/${p.toLowerCase()}`);
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [navigate]);
+
   const dark = heroVisible && !scrolled;
   return (
     <nav className={`tnav${scrolled ? " s" : ""}${dark ? " d" : ""}`}>
-      <div className="tlogo" onClick={() => setPage("Home")}>
+      <div className="tlogo" onClick={() => go("Home")}>
         Tuki<em>Study</em>
       </div>
       <div className="tnav-links">
-        {pages.map((p) => (
-          <span
-            key={p}
-            className={page === p ? "on" : ""}
-            onClick={() => setPage(p)}
-          >
-            {p}
-          </span>
+        {["Home", "Pricing", "About"].map((p) => (
+          <span key={p} className={activePage === p ? "on" : ""} onClick={() => go(p)}>{p}</span>
         ))}
       </div>
-      <a
-        href={PLAY_STORE}
-        target="_blank"
-        rel="noopener"
-        className="tbtn tbtn-dark"
-        style={{ textDecoration: "none" }}
-      >
+      <a href={PLAY_STORE} target="_blank" rel="noopener" className="tbtn tbtn-dark" style={{ textDecoration: "none" }}>
         Get the App
       </a>
     </nav>
@@ -775,7 +780,7 @@ const Testimonials = () => {
 const HomePage = () => (
   <>
     <section className="cine cineHero" id="cine-hero">
-      <BackgroundVideo src={VIDEOS.hero} poster={IMAGES.hero} />
+      <BackgroundVideo src={VIDEOS.hero} poster={IMAGES.hero} preload="auto" />
       <div className="shade" />
       <div className="grain" />
       <Sparks />
@@ -1411,38 +1416,34 @@ const AboutPage = () => (
 );
 
 /* ────────── APP ────────── */
-export default function App() {
-  const [page, setPage] = useState("Home");
-
-  const changePage = useCallback((p) => {
-    setPage(p);
+function AppInner() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const go = useCallback((p) => {
+    navigate(p === "Home" ? "/" : `/${p.toLowerCase()}`);
     window.scrollTo({ top: 0, behavior: "auto" });
-  }, []);
-
-  const PageComponent =
-    { Home: HomePage, Pricing: PricingPage, About: AboutPage }[page] || HomePage;
+  }, [navigate]);
 
   return (
     <div className="tuki">
       <style>{css}</style>
-      <Nav page={page} setPage={changePage} />
-      <div className="page" key={page}>
-        <PageComponent />
+      <Nav />
+      <div className="page" key={location.pathname}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
       </div>
       <footer className="tfoot">
         <div className="tfoot-r">
-          <div
-            className="fl"
-            style={{ cursor: "pointer" }}
-            onClick={() => changePage("Home")}
-          >
+          <div className="fl" style={{ cursor: "pointer" }} onClick={() => go("Home")}>
             Tuki<em>Study</em>
           </div>
           <div className="tfoot-links">
             {["Home", "Pricing", "About"].map((p) => (
-              <span key={p} onClick={() => changePage(p)}>
-                {p}
-              </span>
+              <span key={p} onClick={() => go(p)}>{p}</span>
             ))}
             <span>Twitter</span>
             <span>Instagram</span>
@@ -1451,5 +1452,13 @@ export default function App() {
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <HashRouter>
+      <AppInner />
+    </HashRouter>
   );
 }
