@@ -595,7 +595,7 @@ const Nav = () => {
   return (
     <nav className={`tnav${scrolled ? " s" : ""}${dark ? " d" : ""}`}>
       <div className="tlogo" onClick={() => go("Home")}>
-        Tuki<em>Study</em>
+        <img src="/media/images/tukistudy_logo.png" alt="TukiStudy" style={{ height: 32, width: "auto", display: "block" }} />
       </div>
       <div className="tnav-links">
         {["Home", "Pricing", "About"].map((p) => (
@@ -1439,7 +1439,7 @@ function AppInner() {
       <footer className="tfoot">
         <div className="tfoot-r">
           <div className="fl" style={{ cursor: "pointer" }} onClick={() => go("Home")}>
-            Tuki<em>Study</em>
+            <img src="/media/images/tukistudy_logo.png" alt="TukiStudy" style={{ height: 28, width: "auto", display: "block" }} />
           </div>
           <div className="tfoot-links">
             {["Home", "Pricing", "About"].map((p) => (
