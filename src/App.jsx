@@ -21,38 +21,6 @@ const VIDEOS = {
   community: "https://static.videezy.com/system/resources/previews/000/051/305/original/DSC_1992.mp4",
   
 };
-const TEAM = [
-  {
-    name: "Levy Nguti",
-    role: "CEO",
-    i: "LN",
-    bg: "linear-gradient(135deg,#F58A00,#D97800)",
-  },
-  {
-    name: "Swabir M. Bwana",
-    role: "CFO",
-    i: "SB",
-    bg: "linear-gradient(135deg,#007A6E,#005A50)",
-  },
-  {
-    name: "Adan Ali Wako",
-    role: "COO",
-    i: "AW",
-    bg: "linear-gradient(135deg,#D4573A,#A03828)",
-  },
-  {
-    name: "Kevin Kinyanjui",
-    role: "Co-CTO",
-    i: "KK",
-    bg: "linear-gradient(135deg,#D4A017,#B08A12)",
-  },
-  {
-    name: "Moris Muchiri",
-    role: "Co-CTO",
-    i: "MM",
-    bg: "linear-gradient(135deg,#6C5CE7,#5B3FD4)",
-  },
-];
 
 /* ────────── STYLES ────────── */
 const css = `
@@ -175,11 +143,6 @@ body,html{overflow-x:hidden}
 .tpc ul{list-style:none;margin-bottom:24px}.tpc ul li{font-size:12px;padding:5px 0;display:flex;gap:6px;color:var(--ink)}.tpc ul li::before{content:'✓';color:var(--orange);font-weight:700}
 .tpc .pbtn{display:block;width:100%;text-align:center;padding:11px;border-radius:980px;font-weight:700;font-size:12px;cursor:pointer;border:none;transition:all .3s;text-decoration:none}
 
-/* TEAM */
-.ttmrow{display:flex;gap:clamp(12px,2.5vw,36px);justify-content:center;flex-wrap:wrap}
-.ttm{text-align:center;width:120px}
-.ttm .av{width:56px;height:56px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-style:italic;font-size:17px;color:#fff;box-shadow:0 4px 16px rgba(0,0,0,.1)}
-.ttm h4{font-size:12px;font-weight:800;margin-bottom:1px}.ttm span{font-size:10px;color:var(--grey)}
 
 /* CTA */
 .tcta{padding:clamp(80px,12vw,160px) clamp(16px,5vw,64px);text-align:center;position:relative;overflow:hidden;background:var(--cream)}
@@ -247,7 +210,10 @@ body,html{overflow-x:hidden}
   .labCine{height:100svh}
   .labContent{height:100%;padding:0 20px;align-items:center;justify-content:center}
   .labStack{max-width:100%}
-  .labOverlay{background:linear-gradient(180deg,rgba(7,8,10,.45) 0%,rgba(7,8,10,.12) 25%,rgba(7,8,10,.12) 70%,rgba(7,8,10,.72) 100%)}
+  .labCine .bgv .vwrap.cover{display:none}
+  .labCine .bgv .vwrap.contain video{object-fit:cover!important;filter:saturate(1.1) contrast(1.04) brightness(.95)}
+  .labCine .bgv .matte{display:none}
+  .labOverlay{background:linear-gradient(90deg,rgba(7,8,10,.85) 0%,rgba(7,8,10,.55) 45%,rgba(7,8,10,.1) 80%,rgba(7,8,10,0) 100%)}
   .labCine h2{font-size:clamp(30px,9vw,42px);text-shadow:0 2px 24px rgba(0,0,0,.9)}
   .labCine p{font-size:14px;text-shadow:0 1px 12px rgba(0,0,0,.8)}
   .labCine .pill{text-shadow:none}
@@ -657,16 +623,6 @@ const Marquee = () => {
   );
 };
 
-const CinematicImage = ({ src, title, desc }) => (
-  <div className="cimg">
-    <img src={src} alt={title} loading="lazy" />
-    <div className="ov">
-      <h3 className="serif">{title}</h3>
-      <p>{desc}</p>
-    </div>
-  </div>
-);
-
 const TEACHER_SLIDES = [
   "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=900&q=80",
   "https://images.pexels.com/photos/5905709/pexels-photo-5905709.jpeg?auto=compress&w=800",
@@ -808,20 +764,6 @@ const Testimonials = () => {
     </div>
   );
 };
-
-const TeamSection = () => (
-  <div className="ttmrow">
-    {TEAM.map((t, i) => (
-      <div className="ttm" key={i}>
-        <div className="av" style={{ background: t.bg }}>
-          {t.i}
-        </div>
-        <h4>{t.name}</h4>
-        <span>{t.role}</span>
-      </div>
-    ))}
-  </div>
-);
 
 /* ────────── PAGES ────────── */
 
@@ -1356,30 +1298,6 @@ const AboutPage = () => (
         </div>
       </Reveal>
     </section>
-
-    <section className="tsc" style={{ paddingTop: 52 }}>
-      <Reveal as="div" delay={0} style={{ textAlign: "center", marginBottom: 36 }}>
-        <div className="tsc-label">The People</div>
-        <h2 className="serif" style={{ fontSize: 32 }}>
-          The team behind the app
-        </h2>
-        <p style={{ color: "var(--grey)", maxWidth: 480, margin: "10px auto 0", lineHeight: 1.7, fontSize: 15 }}>
-          We argue about product decisions over pilau. We ship fast, fix faster,
-          and take student feedback way too personally.
-        </p>
-      </Reveal>
-      <Reveal as="div" delay={80}>
-        <TeamSection />
-      </Reveal>
-    </section>
-
-    <Reveal as="div" delay={0}>
-      <CinematicImage
-        src="media/images/team_photo.jpeg"
-        title="Made in Nairobi 🇰🇪"
-        desc="Turning study time into screen time. Learn, Laugh, Level."
-      />
-    </Reveal>
 
     <section className="tsc" style={{ maxWidth: 720, margin: "0 auto", paddingTop: 0 }}>
       <Reveal as="div" delay={0}>
