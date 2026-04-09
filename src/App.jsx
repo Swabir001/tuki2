@@ -132,8 +132,11 @@ body,html{overflow-x:hidden}
 .ttc blockquote{font-family:'Instrument Serif',serif;font-style:italic;font-size:16px;line-height:1.6;margin-bottom:14px}
 .ttc cite{font-size:11px;font-weight:700;color:var(--grey);font-style:normal}
 
+/* BELIEFS */
+.tbelief{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:800px;margin:0 auto}
+
 /* PRICING */
-.tprow{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:660px;margin:0 auto}
+.tprow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto}
 .tpc{background:var(--bg);border:1.5px solid var(--grey-xl);border-radius:20px;padding:32px 24px;position:relative;transition:all .35s}
 .tpc:hover{transform:translateY(-3px);box-shadow:0 12px 48px rgba(0,0,0,.05)}
 .tpc.pop{border-color:var(--orange)}
@@ -174,7 +177,8 @@ body,html{overflow-x:hidden}
   .feat,.feat.rev{grid-template-columns:1fr;direction:ltr}
   .feat.rev>*{direction:ltr}
   .ttrow{grid-template-columns:1fr}
-  .tprow{grid-template-columns:1fr 1fr;max-width:100%}
+  .tprow{grid-template-columns:1fr;max-width:100%}
+  .tbelief{grid-template-columns:1fr}
   .tstats{grid-template-columns:repeat(2,1fr)}
   .tnav-links{display:none}
   .hbg{display:flex}
@@ -185,6 +189,7 @@ body,html{overflow-x:hidden}
 @media(max-width:600px){
   .hbtns{flex-direction:column;align-items:center}
   .tprow{grid-template-columns:1fr}
+  .tbelief{grid-template-columns:1fr}
 }
 @media(max-width:480px){
   /* NAV */
@@ -1141,7 +1146,7 @@ const PricingPage = () => (
       </Reveal>
     </section>
     <section className="tsc" style={{ paddingTop: 0 }}>
-      <div className="tprow" style={{ gridTemplateColumns: "repeat(3,1fr)", maxWidth: 960 }}>
+      <div className="tprow">
         <div className="tpc">
           <h3>Free</h3>
           <div className="pr">
@@ -1309,13 +1314,8 @@ const AboutPage = () => (
     </section>
 
     <section
-      className="tsc"
+      className="tsc tbelief"
       style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3,1fr)",
-        gap: 16,
-        maxWidth: 800,
-        margin: "0 auto",
         paddingTop: 0,
       }}
     >
