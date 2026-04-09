@@ -16,8 +16,8 @@ const IMAGES = {
     "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=900&q=80",
 };
 const VIDEOS = {
-  hero: "media/videos/person_scrolling.mov",
-  labs: "media/videos/virtual_lab.mov",
+  hero: "media/videos/person_scrolling.mp4",
+  labs: "media/videos/virtual_lab.mp4",
   community: "https://static.videezy.com/system/resources/previews/000/051/305/original/DSC_1992.mp4",
   
 };
