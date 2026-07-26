@@ -617,7 +617,7 @@ const Marquee = () => {
     "TukiTalks",
     "E-Books",
     "Students Corner",
-    "KCSE Prep",
+    "Exam Prep",
     "University",
     "Earn from Content",
     "Kenyan Teachers",
@@ -750,7 +750,7 @@ const Stats = () => {
 const Testimonials = () => {
   const data = [
     {
-      q: "I used to dread Physics. Found TukiFeeds and watched 40 videos in one night. KCSE cannot hold me.",
+      q: "I used to dread Physics. Found TukiFeeds and watched 40 videos in one night. Exams cannot hold me.",
       n: "Amina K. — Nairobi",
     },
     {
@@ -865,7 +865,7 @@ const HomePage = () => (
         to actually <em>study.</em>
       </h2>
       <p className="tsp">
-        Everything a Kenyan student needs — KCSE revision, university notes,
+        Everything a Kenyan student needs — exam revision, university notes,
         virtual labs, AI tutoring — designed for how you actually learn: on your
         phone.
       </p>
@@ -880,7 +880,7 @@ const HomePage = () => (
           title="Your feed finally earned your <em>time.</em>"
           desc="Short educational videos from verified Kenyan teachers. Swipe like TikTok, learn like a classroom. Every video passes our review — no misinformation, no fluff. Teachers earn based on likes, views, and reshares."
           checks={[
-            "KCSE & University content, verified",
+            "Curriculum & University content, verified",
             "Like, Save, Share & Follow teachers",
             "Teachers earn from posting content",
             "Subject tags & personalised feed",
@@ -964,7 +964,7 @@ const HomePage = () => (
           badge="E-Books + TukiTalks"
           label="E-Books & TukiTalks"
           title="Read it. Or listen on your <em>commute.</em>"
-          desc="Hundreds of textbooks and KCSE revision guides — most free, some premium. Plus educational podcasts for every subject. Learn History while Nairobi moves around you."
+          desc="Hundreds of textbooks and exam revision guides — most free, some premium. Plus educational podcasts for every subject. Learn History while Nairobi moves around you."
           checks={[
             "Free & premium e-books",
             "Highlighting & note-taking tools",
@@ -1333,7 +1333,7 @@ const AboutPage = () => (
         {
           icon: "🇰🇪",
           t: "Actually Kenyan",
-          d: "Every piece of content is aligned to the Kenyan curriculum. No copy-pasting from British or American syllabuses. If it doesn't help with your KCSE, it doesn't belong here.",
+          d: "Every piece of content is aligned to the Kenyan curriculum. No copy-pasting from British or American syllabuses. If it doesn't align with your national curriculum, it doesn't belong here.",
         },
         {
           icon: "💰",
@@ -1361,6 +1361,79 @@ const AboutPage = () => (
         </Reveal>
       ))}
     </section>
+    <section className="tsc" style={{ paddingTop: 0 }}>
+      <Reveal as="div" delay={0}>
+        <div className="tsc-label" style={{ textAlign: "center" }}>Our Partners</div>
+        <h2 className="serif" style={{ textAlign: "center", fontSize: 32, marginBottom: 12 }}>
+          Built together. <em>Better.</em>
+        </h2>
+        <p className="tsp" style={{ textAlign: "center", marginBottom: 48 }}>
+          We partner with organisations that share our belief — that every student deserves a real shot.
+        </p>
+      </Reveal>
+
+      {/* SiliconWit */}
+      <Reveal as="div" delay={0}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20, background: "var(--cream)", borderRadius: "var(--r)", padding: 36, marginBottom: 24 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+            <img src="/media/images/siliconwit_logo.jpeg" alt="SiliconWit" style={{ height: 80, width: "auto", borderRadius: 12, objectFit: "contain", background: "#fff", padding: 8 }} />
+            <div>
+              <div className="tsc-label" style={{ marginBottom: 4 }}>Technology Partner</div>
+              <h3 style={{ fontSize: 20, fontWeight: 800 }}>SiliconWit — Machines & Minds</h3>
+            </div>
+          </div>
+          <p style={{ fontSize: 15, color: "var(--grey)", lineHeight: 1.8 }}>
+            At TukiStudy, our mission is to empower the next generation of innovators with accessible, world-class education. But true technical mastery requires heavy-duty practical execution. That is why we've joined forces with SiliconWit. SiliconWit brings industry-trusted frameworks in mechanical design, automation, and intelligent hardware systems straight into the TukiStudy ecosystem. This partnership ensures our engineering and tech curriculums are backed by real-world application, utilizing open-source tools, simulators, and live telemetry tracking. By combining TukiStudy's intuitive EdTech platform with SiliconWit's robust engineering infrastructure, we are enabling students to seamlessly move from foundational theory to deploying live cloud-connected operations.
+          </p>
+        </div>
+      </Reveal>
+
+      {/* YOVOH */}
+      <Reveal as="div" delay={60}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20, background: "var(--cream)", borderRadius: "var(--r)", padding: 36, marginBottom: 24 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+            <img src="/media/images/yovoh_logo.jpeg" alt="YOVOH" style={{ height: 80, width: "auto", borderRadius: 12, objectFit: "contain", background: "#fff", padding: 8 }} />
+            <div>
+              <div className="tsc-label" style={{ marginBottom: 4 }}>Mentorship Partner</div>
+              <h3 style={{ fontSize: 20, fontWeight: 800 }}>YOVOH — Young Voices of Hope, Marsabit</h3>
+            </div>
+          </div>
+          <p style={{ fontSize: 15, color: "var(--grey)", lineHeight: 1.8 }}>
+            Talent is distributed equally, but opportunity is not. Students in ASAL regions face unique challenges, from limited resources to geographic isolation. But where others see barriers, we see brilliant minds waiting for the right spark. By combining our digital platform with YOVOH's incredible mentorship network, we are bringing elite guidance, career pathways, and academic support directly to the students who need it most. We aren't just offering tools — we are building a lifeline of inspiration and real-world guidance.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16, marginTop: 4 }}>
+            {[
+              { t: "Democratizing Guidance", d: "Bringing high-impact mentorship to classrooms and communities that have historically been left in the dark." },
+              { t: "Fostering Resilience", d: "Turning academic challenges into stepping stones for future leaders, innovators, and entrepreneurs from ASAL regions." },
+              { t: "Holistic Growth", d: "Matching students with mentors who understand their journeys, accelerate their learning, and expand their worldviews." },
+            ].map((v, i) => (
+              <div key={i} style={{ background: "#fff", borderRadius: 12, padding: 20 }}>
+                <h4 style={{ fontSize: 13, fontWeight: 800, marginBottom: 8 }}>✦ {v.t}</h4>
+                <p style={{ fontSize: 13, color: "var(--grey)", lineHeight: 1.7 }}>{v.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Reveal>
+
+      {/* YAFNET */}
+      <Reveal as="div" delay={120}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20, background: "var(--cream)", borderRadius: "var(--r)", padding: 36 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+            <img src="/media/images/yafnet_logo.jpeg" alt="YAFNET" style={{ height: 80, width: "auto", borderRadius: 12, objectFit: "contain", background: "#fff", padding: 8 }} />
+            <div>
+              <div className="tsc-label" style={{ marginBottom: 4 }}>Connectivity Partner</div>
+              <h3 style={{ fontSize: 20, fontWeight: 800 }}>YAFNET — Education Without Borders</h3>
+            </div>
+          </div>
+          <p style={{ fontSize: 15, color: "var(--grey)", lineHeight: 1.8 }}>
+            High-speed progress shouldn't slow down when it hits hard terrain. In Kenya's Arid and Semi-Arid Lands, geography often decides where potential ends — we're here to rewrite that rule. TukiStudy is teaming up with YAFNET to turn vast landscapes into connected classrooms. By blending our interactive learning tools with YAFNET's boots-on-the-ground youth networks in regions like Marsabit and Moyale, we aren't just delivering digital literacy — we're delivering equal opportunity to every desk, under every tree, and across every border.
+          </p>
+          <p style={{ fontSize: 14, fontWeight: 700, color: "var(--ink)" }}>Tech in hand. Peace in mind. Opportunity everywhere.</p>
+        </div>
+      </Reveal>
+    </section>
+
     <section className="tcta">
       <Reveal as="div" delay={0}>
         <div className="tsc-label" style={{ position: "relative", zIndex: 1 }}>
