@@ -1376,7 +1376,26 @@ const AboutPage = () => (
       <Reveal as="div" delay={0}>
         <div style={{ display: "flex", flexDirection: "column", gap: 20, background: "var(--cream)", borderRadius: "var(--r)", padding: 36, marginBottom: 24 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
-            <img src="/media/images/siliconwit_logo.jpeg" alt="SiliconWit" style={{ height: 80, width: "auto", borderRadius: 12, objectFit: "contain", background: "#fff", padding: 8 }} />
+            <a
+  href="https://siliconwit.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{ display: "inline-block" }}
+>
+  <img
+    src="/media/images/siliconwit_logo.jpeg"
+    alt="SiliconWit"
+    style={{
+      height: 80,
+      width: "auto",
+      borderRadius: 12,
+      objectFit: "contain",
+      background: "#fff",
+      padding: 8,
+      cursor: "pointer",
+    }}
+  />
+</a>
             <div>
               <div className="tsc-label" style={{ marginBottom: 4 }}>Technology Partner</div>
               <h3 style={{ fontSize: 20, fontWeight: 800 }}>SiliconWit — Machines & Minds</h3>
@@ -1392,7 +1411,45 @@ const AboutPage = () => (
       <Reveal as="div" delay={60}>
         <div style={{ display: "flex", flexDirection: "column", gap: 20, background: "var(--cream)", borderRadius: "var(--r)", padding: 36, marginBottom: 24 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
-            <img src="/media/images/yovoh_logo.jpeg" alt="YOVOH" style={{ height: 80, width: "auto", borderRadius: 12, objectFit: "contain", background: "#fff", padding: 8 }} />
+            <a
+  href="https://yovoh-marsabit.onrender.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{ display: "inline-block" }}
+>
+  <img
+    src="/media/images/yovoh_logo.jpeg"
+    alt="YoVoH"
+    style={{
+      height: 80,
+      width: "auto",
+      borderRadius: 12,
+      objectFit: "contain",
+      background: "#fff",
+      padding: 8,
+      cursor: "pointer",
+    }}
+  />
+</a><a
+  href="https://yovoh-marsabit.onrender.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{ display: "inline-block" }}
+>
+  <img
+    src="/media/images/yovoh_logo.jpeg"
+    alt="YoVoH"
+    style={{
+      height: 80,
+      width: "auto",
+      borderRadius: 12,
+      objectFit: "contain",
+      background: "#fff",
+      padding: 8,
+      cursor: "pointer",
+    }}
+  />
+</a>
             <div>
               <div className="tsc-label" style={{ marginBottom: 4 }}>Mentorship Partner</div>
               <h3 style={{ fontSize: 20, fontWeight: 800 }}>YOVOH — Young Voices of Hope, Marsabit</h3>
@@ -1420,7 +1477,26 @@ const AboutPage = () => (
       <Reveal as="div" delay={120}>
         <div style={{ display: "flex", flexDirection: "column", gap: 20, background: "var(--cream)", borderRadius: "var(--r)", padding: 36 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
-            <img src="/media/images/yafnet_logo.jpeg" alt="YAFNET" style={{ height: 80, width: "auto", borderRadius: 12, objectFit: "contain", background: "#fff", padding: 8 }} />
+            <a
+  href="https://yafnet-website.onrender.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{ display: "inline-block" }}
+>
+  <img
+    src="/media/images/yafnet_logo.jpeg"
+    alt="YAFNET"
+    style={{
+      height: 80,
+      width: "auto",
+      borderRadius: 12,
+      objectFit: "contain",
+      background: "#fff",
+      padding: 8,
+      cursor: "pointer",
+    }}
+  />
+</a>
             <div>
               <div className="tsc-label" style={{ marginBottom: 4 }}>Connectivity Partner</div>
               <h3 style={{ fontSize: 20, fontWeight: 800 }}>YAFNET — Education Without Borders</h3>
