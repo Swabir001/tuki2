@@ -1248,225 +1248,245 @@ const PricingPage = () => (
   </>
 );
 
+```jsx
 const AboutPage = () => (
   <>
     <section className="tsc tsc-c" style={{ paddingTop: 140 }}>
       <Reveal as="div" delay={0}>
         <div className="tsc-label">About Tuki</div>
         <h2>
-          Built in Nairobi.
+          Learning that reaches
           <br />
-          For <em>Kenya.</em>
+          <em>everywhere.</em>
         </h2>
         <p className="tsp">
-          We're a small team of five. Some of us went to national schools, some
-          to schools nobody has heard of. But we all had the same problem —
-          we spent more time figuring out <em>where</em> to study than actually
-          studying.
+          TukiStudy is built on a simple belief: where you are born should
+          never determine how far you can go. We are creating a learning
+          ecosystem that connects students to knowledge, opportunity,
+          mentorship, and the digital tools they need to build their future.
         </p>
       </Reveal>
-    </section>
 
-    <section className="tsc" style={{ maxWidth: 720, margin: "0 auto", paddingTop: 0 }}>
+      {/* Our Partners */}
+      <Reveal as="div" delay={60}>
+        <div style={{ marginTop: 80 }}>
+          <div className="tsc-label" style={{ textAlign: "center" }}>
+            Our Partners
+          </div>
+
+          <p
+            className="tsp"
+            style={{
+              textAlign: "center",
+              marginBottom: 48,
+            }}
+          >
+            We partner with organisations that share our belief — that every
+            student deserves a real shot.
+          </p>
+        </div>
+      </Reveal>
+
+      {/* SiliconWit */}
       <Reveal as="div" delay={0}>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 28,
-            fontSize: 16,
-            lineHeight: 1.85,
-            color: "var(--grey)",
+            gap: 20,
+            background: "var(--cream)",
+            borderRadius: "var(--r)",
+            padding: 36,
+            marginBottom: 24,
           }}
         >
-          <p>
-            The textbooks were expensive. The YouTube tutorials were American.
-            The good tutors were across town and charged by the hour. And the
-            WiFi — let's not even talk about the WiFi.
-          </p>
-          <p>
-            We kept asking the same question: why is it so hard to just{" "}
-            <strong style={{ color: "var(--ink)" }}>learn</strong>? The knowledge
-            exists. The teachers exist. The students definitely exist. What was
-            missing was one place that actually understood the Kenyan student —
-            their curriculum, their budget, their phone, their 45-minute matatu
-            ride home.
-          </p>
-          <p>
-            So we built it. Tuki started as a group chat argument that got out
-            of hand. Someone said "we should just make the thing." Three months
-            later, we had a working app. Now, thousands of students
-            can use it to study, and teachers can earn real money from
-            content they were already creating anyway.
-          </p>
-          <p>
-            We're not a Silicon Valley startup chasing growth metrics. We're
-            five Kenyans who genuinely believe that a student in Eldoret
-            deserves the same quality of education as one in Karen — and that
-            the phone in their pocket is enough to make that happen.
-          </p>
-        </div>
-      </Reveal>
-    </section>
-
-    <section className="tsc" style={{ maxWidth: 720, margin: "0 auto", paddingTop: 0 }}>
-      <Reveal as="div" delay={0}>
-        <div className="tsc-label" style={{ textAlign: "center" }}>What we believe</div>
-        <h2 className="serif" style={{ textAlign: "center", fontSize: 32, marginBottom: 36 }}>
-          A few things we don't compromise on
-        </h2>
-      </Reveal>
-    </section>
-
-    <section
-      className="tsc tbelief"
-      style={{
-        paddingTop: 0,
-      }}
-    >
-      {[
-        {
-          icon: "📱",
-          t: "Phone-first, always",
-          d: "Over 90% of Kenyan students get online through their phone. We don't build for laptops and then squeeze it down — we start with the phone and work up.",
-        },
-        {
-          icon: "🇰🇪",
-          t: "Actually Kenyan",
-          d: "Every piece of content is aligned to the Kenyan curriculum. No copy-pasting from British or American syllabuses. If it doesn't align with your national curriculum, it doesn't belong here.",
-        },
-        {
-          icon: "💰",
-          t: "Teachers get paid",
-          d: "Good teachers change lives. They should also be able to pay rent. Every shilling earned on Tuki goes straight to M-Pesa — no middlemen, no waiting.",
-        },
-      ].map((v, i) => (
-        <Reveal key={i} as="div" delay={i * 90}>
           <div
             style={{
-              background: "var(--cream)",
-              borderRadius: "var(--r)",
-              padding: 28,
-              textAlign: "center",
+              display: "flex",
+              alignItems: "center",
+              gap: 20,
+              flexWrap: "wrap",
             }}
           >
-            <div style={{ fontSize: 28, marginBottom: 10 }}>{v.icon}</div>
-            <h4 style={{ fontSize: 14, fontWeight: 800, marginBottom: 8 }}>
-              {v.t}
-            </h4>
-            <p style={{ fontSize: 13, color: "var(--grey)", lineHeight: 1.7 }}>
-              {v.d}
-            </p>
-          </div>
-        </Reveal>
-      ))}
-    </section>
-    <section className="tsc" style={{ paddingTop: 0 }}>
-      <Reveal as="div" delay={0}>
-        <div className="tsc-label" style={{ textAlign: "center" }}>Our Partners</div>
-        <h2 className="serif" style={{ textAlign: "center", fontSize: 32, marginBottom: 12 }}>
-          Built together. <em>Better.</em>
-        </h2>
-        <p className="tsp" style={{ textAlign: "center", marginBottom: 48 }}>
-          We partner with organisations that share our belief — that every student deserves a real shot.
-        </p>
-      </Reveal>
-
-      {/* SiliconWit */}
-      <Reveal as="div" delay={0}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 20, background: "var(--cream)", borderRadius: "var(--r)", padding: 36, marginBottom: 24 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
             <a
-  href="https://siliconwit.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  style={{ display: "inline-block" }}
->
-  <img
-    src="/media/images/siliconwit_logo.jpeg"
-    alt="SiliconWit"
-    style={{
-      height: 80,
-      width: "auto",
-      borderRadius: 12,
-      objectFit: "contain",
-      background: "#fff",
-      padding: 8,
-      cursor: "pointer",
-    }}
-  />
-</a>
+              href="https://siliconwit.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit SiliconWit website"
+              style={{
+                display: "inline-block",
+                textDecoration: "none",
+                transition: "transform 0.25s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+            >
+              <img
+                src="/media/images/siliconwit_logo.jpeg"
+                alt="SiliconWit"
+                style={{
+                  height: 80,
+                  width: "auto",
+                  borderRadius: 12,
+                  objectFit: "contain",
+                  background: "#fff",
+                  padding: 8,
+                  cursor: "pointer",
+                  display: "block",
+                }}
+              />
+            </a>
+
             <div>
-              <div className="tsc-label" style={{ marginBottom: 4 }}>Technology Partner</div>
-              <h3 style={{ fontSize: 20, fontWeight: 800 }}>SiliconWit — Machines & Minds</h3>
+              <div
+                className="tsc-label"
+                style={{ marginBottom: 4 }}
+              >
+                Technology Partner
+              </div>
+
+              <h3 style={{ fontSize: 20, fontWeight: 800 }}>
+                SiliconWit — Machines & Minds
+              </h3>
             </div>
           </div>
-          <p style={{ fontSize: 15, color: "var(--grey)", lineHeight: 1.8 }}>
-            At TukiStudy, our mission is to empower the next generation of innovators with accessible, world-class education. But true technical mastery requires heavy-duty practical execution. That is why we've joined forces with SiliconWit. SiliconWit brings industry-trusted frameworks in mechanical design, automation, and intelligent hardware systems straight into the TukiStudy ecosystem. This partnership ensures our engineering and tech curriculums are backed by real-world application, utilizing open-source tools, simulators, and live telemetry tracking. By combining TukiStudy's intuitive EdTech platform with SiliconWit's robust engineering infrastructure, we are enabling students to seamlessly move from foundational theory to deploying live cloud-connected operations.
+
+          <p
+            style={{
+              fontSize: 15,
+              color: "var(--grey)",
+              lineHeight: 1.8,
+            }}
+          >
+            At TukiStudy, our mission is to empower the next generation of
+            innovators with accessible, world-class education. But true
+            technical mastery requires heavy-duty practical execution. That
+            is why we've joined forces with SiliconWit. SiliconWit brings
+            industry-trusted frameworks in mechanical design, automation,
+            and intelligent hardware systems straight into the TukiStudy
+            ecosystem. This partnership ensures our engineering and tech
+            curriculums are backed by real-world application, utilizing
+            open-source tools, simulators, and live telemetry tracking. By
+            combining TukiStudy's intuitive EdTech platform with SiliconWit's
+            robust engineering infrastructure, we are enabling students to
+            seamlessly move from foundational theory to deploying live
+            cloud-connected operations.
           </p>
         </div>
       </Reveal>
 
-      {/* YOVOH */}
+      {/* YoVoH */}
       <Reveal as="div" delay={60}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 20, background: "var(--cream)", borderRadius: "var(--r)", padding: 36, marginBottom: 24 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            background: "var(--cream)",
+            borderRadius: "var(--r)",
+            padding: 36,
+            marginBottom: 24,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 20,
+              flexWrap: "wrap",
+            }}
+          >
             <a
-  href="https://yovoh-marsabit.onrender.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  style={{ display: "inline-block" }}
->
-  <img
-    src="/media/images/yovoh_logo.jpeg"
-    alt="YoVoH"
-    style={{
-      height: 80,
-      width: "auto",
-      borderRadius: 12,
-      objectFit: "contain",
-      background: "#fff",
-      padding: 8,
-      cursor: "pointer",
-    }}
-  />
-</a><a
-  href="https://yovoh-marsabit.onrender.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  style={{ display: "inline-block" }}
->
-  <img
-    src="/media/images/yovoh_logo.jpeg"
-    alt="YoVoH"
-    style={{
-      height: 80,
-      width: "auto",
-      borderRadius: 12,
-      objectFit: "contain",
-      background: "#fff",
-      padding: 8,
-      cursor: "pointer",
-    }}
-  />
-</a>
+              href="https://yovoh-marsabit.onrender.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit YoVoH website"
+              style={{
+                display: "inline-block",
+                textDecoration: "none",
+                transition: "transform 0.25s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+            >
+              <img
+                src="/media/images/yovoh_logo.jpeg"
+                alt="YoVoH"
+                style={{
+                  height: 80,
+                  width: "auto",
+                  borderRadius: 12,
+                  objectFit: "contain",
+                  background: "#fff",
+                  padding: 8,
+                  cursor: "pointer",
+                  display: "block",
+                }}
+              />
+            </a>
+
             <div>
-              <div className="tsc-label" style={{ marginBottom: 4 }}>Mentorship Partner</div>
-              <h3 style={{ fontSize: 20, fontWeight: 800 }}>YOVOH — Young Voices of Hope, Marsabit</h3>
+              <div
+                className="tsc-label"
+                style={{ marginBottom: 4 }}
+              >
+                Mentorship Partner
+              </div>
+
+              <h3 style={{ fontSize: 20, fontWeight: 800 }}>
+                YOVOH — Young Voices of Hope, Marsabit
+              </h3>
             </div>
           </div>
-          <p style={{ fontSize: 15, color: "var(--grey)", lineHeight: 1.8 }}>
-            Talent is distributed equally, but opportunity is not. Students in ASAL regions face unique challenges, from limited resources to geographic isolation. But where others see barriers, we see brilliant minds waiting for the right spark. By combining our digital platform with YOVOH's incredible mentorship network, we are bringing elite guidance, career pathways, and academic support directly to the students who need it most. We aren't just offering tools — we are building a lifeline of inspiration and real-world guidance.
+
+          <p
+            style={{
+              fontSize: 15,
+              color: "var(--grey)",
+              lineHeight: 1.8,
+            }}
+          >
+            Talent is distributed equally, but opportunity is not. Students
+            in ASAL regions face unique challenges, from limited resources
+            to geographic isolation. But where others see barriers, we see
+            brilliant minds waiting for the right spark. By combining our
+            digital platform with YOVOH's incredible mentorship network, we
+            are bringing elite guidance, career pathways, and academic
+            support directly to the students who need it most. We aren't
+            just offering tools — we are building a lifeline of inspiration
+            and real-world guidance.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16, marginTop: 4 }}>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: 16,
+              marginTop: 4,
+            }}
+          >
             {[
-              { t: "Democratizing Guidance", d: "Bringing high-impact mentorship to classrooms and communities that have historically been left in the dark." },
-              { t: "Fostering Resilience", d: "Turning academic challenges into stepping stones for future leaders, innovators, and entrepreneurs from ASAL regions." },
-              { t: "Holistic Growth", d: "Matching students with mentors who understand their journeys, accelerate their learning, and expand their worldviews." },
-            ].map((v, i) => (
-              <div key={i} style={{ background: "#fff", borderRadius: 12, padding: 20 }}>
-                <h4 style={{ fontSize: 13, fontWeight: 800, marginBottom: 8 }}>✦ {v.t}</h4>
-                <p style={{ fontSize: 13, color: "var(--grey)", lineHeight: 1.7 }}>{v.d}</p>
+              {
+                t: "Democratizing Guidance",
+                d: "Bringing high-impact mentorship to classrooms and communities that have historically been left in the dark.",
+              },
+              {
+                t: "Fostering Resilience",
+                d: "Turning academic challenges into stepping stones for future leaders, innovators, and entrepreneurs from ASAL regions.",
+              },
+            ].map((item) => (
+              <div key={item.t}>
+                <strong>{item.t}</strong>
+                <p>{item.d}</p>
               </div>
             ))}
           </div>
@@ -1475,94 +1495,104 @@ const AboutPage = () => (
 
       {/* YAFNET */}
       <Reveal as="div" delay={120}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 20, background: "var(--cream)", borderRadius: "var(--r)", padding: 36 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
-            <a
-  href="https://yafnet-website.onrender.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  style={{ display: "inline-block" }}
->
-  <img
-    src="/media/images/yafnet_logo.jpeg"
-    alt="YAFNET"
-    style={{
-      height: 80,
-      width: "auto",
-      borderRadius: 12,
-      objectFit: "contain",
-      background: "#fff",
-      padding: 8,
-      cursor: "pointer",
-    }}
-  />
-</a>
-            <div>
-              <div className="tsc-label" style={{ marginBottom: 4 }}>Connectivity Partner</div>
-              <h3 style={{ fontSize: 20, fontWeight: 800 }}>YAFNET — Education Without Borders</h3>
-            </div>
-          </div>
-          <p style={{ fontSize: 15, color: "var(--grey)", lineHeight: 1.8 }}>
-            High-speed progress shouldn't slow down when it hits hard terrain. In Kenya's Arid and Semi-Arid Lands, geography often decides where potential ends — we're here to rewrite that rule. TukiStudy is teaming up with YAFNET to turn vast landscapes into connected classrooms. By blending our interactive learning tools with YAFNET's boots-on-the-ground youth networks in regions like Marsabit and Moyale, we aren't just delivering digital literacy — we're delivering equal opportunity to every desk, under every tree, and across every border.
-          </p>
-          <p style={{ fontSize: 14, fontWeight: 700, color: "var(--ink)" }}>Tech in hand. Peace in mind. Opportunity everywhere.</p>
-        </div>
-      </Reveal>
-    </section>
-
-    <section className="tcta">
-      <Reveal as="div" delay={0}>
-        <div className="tsc-label" style={{ position: "relative", zIndex: 1 }}>
-          Join us
-        </div>
-        <h2
-          className="serif"
+        <div
           style={{
-            fontSize: "clamp(32px,4.5vw,52px)",
-            marginBottom: 14,
-            position: "relative",
-            zIndex: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            background: "var(--cream)",
+            borderRadius: "var(--r)",
+            padding: 36,
           }}
         >
-          Your classmates already
-          <br />
-          downloaded <em>it.</em>
-        </h2>
-        <p
-          style={{
-            fontSize: 15,
-            color: "var(--grey)",
-            maxWidth: 400,
-            margin: "0 auto 24px",
-            lineHeight: 1.7,
-            position: "relative",
-            zIndex: 1,
-          }}
-        >
-          Free to download. Kenyan content. Real teachers.
-        </p>
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <a
-            href={PLAY_STORE}
-            target="_blank"
-            rel="noopener"
-            className="tbtn tbtn-orange"
+          <div
             style={{
-              textDecoration: "none",
-              padding: "14px 32px",
-              fontSize: 14,
+              display: "flex",
+              alignItems: "center",
+              gap: 20,
+              flexWrap: "wrap",
             }}
           >
-            Download Now
-          </a>
-        </div>
-        <div className="tag" style={{ position: "relative", zIndex: 1 }}>
-          Where Learning Meets Vibes.
+            <a
+              href="https://yafnet-website.onrender.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit YAFNET website"
+              style={{
+                display: "inline-block",
+                textDecoration: "none",
+                transition: "transform 0.25s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+            >
+              <img
+                src="/media/images/yafnet_logo.jpeg"
+                alt="YAFNET"
+                style={{
+                  height: 80,
+                  width: "auto",
+                  borderRadius: 12,
+                  objectFit: "contain",
+                  background: "#fff",
+                  padding: 8,
+                  cursor: "pointer",
+                  display: "block",
+                }}
+              />
+            </a>
+
+            <div>
+              <div
+                className="tsc-label"
+                style={{ marginBottom: 4 }}
+              >
+                Connectivity Partner
+              </div>
+
+              <h3 style={{ fontSize: 20, fontWeight: 800 }}>
+                YAFNET — Education Without Borders
+              </h3>
+            </div>
+          </div>
+
+          <p
+            style={{
+              fontSize: 15,
+              color: "var(--grey)",
+              lineHeight: 1.8,
+            }}
+          >
+            High-speed progress shouldn't slow down when it hits hard
+            terrain. In Kenya's Arid and Semi-Arid Lands, geography often
+            decides where potential ends — we're here to rewrite that rule.
+            TukiStudy is teaming up with YAFNET to turn vast landscapes into
+            connected classrooms. By blending our interactive learning tools
+            with YAFNET's boots-on-the-ground youth networks in regions like
+            Marsabit and Moyale, we aren't just delivering digital literacy —
+            we're delivering equal opportunity to every desk, under every
+            tree, and across every border.
+          </p>
+
+          <p
+            style={{
+              fontSize: 14,
+              fontWeight: 700,
+              color: "var(--ink)",
+            }}
+          >
+            Tech in hand. Peace in mind. Opportunity everywhere.
+          </p>
         </div>
       </Reveal>
     </section>
   </>
 );
+```
 
 /* ────────── APP ────────── */
 function AppInner() {
